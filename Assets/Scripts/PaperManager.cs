@@ -86,18 +86,7 @@ public class PaperManager : MonoBehaviour
     {
         if (paperStack.Count > 0 && !GameManager.Instance.IsPaused())
         {
-            Paper topPaper = paperStack.Pop();
-
-            if (topPaper.type != PaperType.Rejected)
-            {
-                Debug.Log("Wrong");
-                GameUIManager.Instance.SetComputerText(TextDatabase.Instance.GetRandomComfortText());
-                GameUIManager.Instance.ShowWrongDirectionSign();
-                //GameUIManager.Instance.DecreasingTime(decreasingTime);
-                wrongDirectionSO.RaiseEvent(decreasingTime);
-            }
-
-            CheckAndDestroy(topPaper.gameObject);
+            StartCoroutine(MovePaper(paperStack.Peek().transform.position, PaperType.Rejected));
         }
     }
 
@@ -117,7 +106,7 @@ public class PaperManager : MonoBehaviour
             Debug.Log("Wrong");
             GameUIManager.Instance.SetComputerText(TextDatabase.Instance.GetRandomComfortText());
             GameUIManager.Instance.ShowWrongDirectionSign();
-            GameUIManager.Instance.DecreasingTime(decreasingTime);
+            wrongDirectionSO.RaiseEvent(decreasingTime);
 
         }
 

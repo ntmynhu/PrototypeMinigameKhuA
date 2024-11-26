@@ -45,9 +45,9 @@ public class GameUIManager : MonoBehaviour
 
     public void InitUI(GameLevel gameLevel)
     {
-        PopulateNote(gameLevel.colorList_L, notePaperPosList, leftNote);
-        PopulateNote(gameLevel.colorList_R, notePaperPosList, rightNote);
-        PopulateNote(gameLevel.colorList_Rejected, notePaperPosList_Rejected, rejectedNote);
+        SpawnNote(gameLevel.colorList_L, notePaperPosList, leftNote);
+        SpawnNote(gameLevel.colorList_R, notePaperPosList, rightNote);
+        SpawnNote(gameLevel.colorList_Rejected, notePaperPosList_Rejected, rejectedNote);
 
         totalTime = gameLevel.totalTime;
         remainingTime = totalTime;
@@ -64,7 +64,7 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    private void PopulateNote(List<Color> colorList, List<RectTransform> posList, GameObject notePrefab)
+    private void SpawnNote(List<Color> colorList, List<RectTransform> posList, GameObject notePrefab)
     {
         foreach (Color color in colorList)
         {
