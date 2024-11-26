@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
         GetColorBaseOnLevel(ref currentLevel);
 
         GameUIManager.Instance.InitUI(currentLevel);
-        PaperManager.Instance.PopulatePaper(currentLevel);
+        PaperManager.Instance.InitPaperStack(currentLevel);
         GameUIManager.Instance.SetComputerText("\\(O_O)/\nAre you ready?");
 
         GameUIManager.Instance.StartCountDown(3f);
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         GameUIManager.Instance.ResetUI();
         GameUIManager.Instance.InitUI(currentLevel);
-        PaperManager.Instance.PopulatePaper(currentLevel);
+        PaperManager.Instance.InitPaperStack(currentLevel);
 
         GameUIManager.Instance.StartCountDown(3f);
     }

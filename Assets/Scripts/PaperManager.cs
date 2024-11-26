@@ -40,17 +40,20 @@ public class PaperManager : MonoBehaviour
 
     #endregion
 
-    public void PopulatePaper(GameLevel gameLevel)
+    public void InitPaperStack(GameLevel gameLevel)
     {
         for (int i = 0; i < gameLevel.paperNumber; i++)
         {
+            // Instantiate và setup giấy
             Paper paperSpawned = Instantiate(paperPrefab, currentPos, Quaternion.identity, this.transform);
             paperSpawned.SetUpPaper(gameLevel);
             paperStack.Push(paperSpawned);
 
+            // Tăng sorting order và đặt random rotation
             paperSpawned.gameObject.GetComponent<SpriteRenderer>().sortingOrder = paperStack.Count;
             paperSpawned.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-1.5f, 1.5f));
 
+            // Tăng vị trí cho tờ giấy tiếp theo
             currentPos.y += yAxisOffset;
         }
 
